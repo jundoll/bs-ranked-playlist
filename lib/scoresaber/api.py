@@ -54,7 +54,6 @@ async def getLeaderboardInfoCollection(
 
     # request
     requestUrl = f'{SERVER}/api/leaderboards{query}'
-    print(requestUrl)
     response = await api.get(requestUrl)
     responseJson = json.load(response)
     return LeaderboardInfoCollection.gen(responseJson)

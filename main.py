@@ -26,7 +26,6 @@ async def main():
                 ]
             } for x in leaderboardInfoCollection.leaderboards if int(x.stars) == star]
         else:
-            print(1)
             return
 
         # read image
@@ -35,6 +34,11 @@ async def main():
 
         # gen playlist
         playlist = {
+            "customData": {
+                "syncURL": f"https://github.com/jundoll/bs-ranked-playlist/releases/latest/download/ranked_star_{star:02}.bplist",
+                "weighting": 20,
+                "customPassText": None
+            },
             "playlistTitle": f"ranked_star_{star:02}",
             "playlistAuthor": "aruru",
             "songs": songs,
