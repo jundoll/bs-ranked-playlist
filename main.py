@@ -1,7 +1,5 @@
 # load modules
 import asyncio
-from urllib.request import Request, urlopen
-import pandas as pd
 import json
 import lib.scoresaber.api as scoresaberAPI
 
