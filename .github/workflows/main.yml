@@ -34,9 +34,6 @@ jobs:
           for asset in ./*.bplist; do
             assets+=("-a" "$asset")
           done
-          for asset in ./*.json; do
-            assets+=("-a" "$asset")
-          done
           assets+=("-a" "ranked-playlist.zip")
           tag_name=`date '+%Y%m%d%H%M'`
           hub release create "${assets[@]}" -m "Latest" "$tag_name"
