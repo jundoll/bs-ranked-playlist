@@ -9,7 +9,7 @@ async def main():
     for star in range(15):
 
         # get ranked maplist
-        leaderboardInfoCollection = await scoresaberAPI.getLeaderboardInfoCollection(ranked=True, minStar=star-1, maxStar=star+1)
+        leaderboardInfoCollection = await scoresaberAPI.getLeaderboardInfoCollection(ranked=True, minStar=star-1, maxStar=star+1, category=1, sort=1)
 
         # set songs
         if leaderboardInfoCollection is not None:
