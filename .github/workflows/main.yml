@@ -31,7 +31,7 @@ jobs:
           cd dist
           zip -r ranked-playlist.zip ./*.*
           assets=()
-          for asset in ./*.csv; do
+          for asset in ./*.bplist; do
             assets+=("-a" "$asset")
           done
           for asset in ./*.json; do
