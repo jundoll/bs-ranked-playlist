@@ -72,7 +72,7 @@ async def main():
             else:
                 break
 
-            await asyncio.sleep(1/400)
+            await asyncio.sleep(1/200)
 
         # read image
         with open(f'img/s{star:02}.txt', 'r') as f:
