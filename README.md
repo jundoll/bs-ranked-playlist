@@ -5,7 +5,7 @@
 
 ## ダウンロード先
 
- * [こちら](https://github.com/jundoll/bs-bad-rating-playlist/releases/latest)からどうぞ
+ * [こちら](https://github.com/jundoll/bs-ranked-playlist/releases/latest)からどうぞ
 
 
 ## その他
