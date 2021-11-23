@@ -8,5 +8,7 @@
  * [こちら](https://github.com/jundoll/bs-bad-rating-playlist/releases/latest)からどうぞ
 
 
-## 備考
- - 毎日0時に更新します。
+## その他
+ - 下画像の赤枠を押すと、最新のプレイリストに自動更新されます。  
+   ![Sync](img/sync.png)
+ - プレイリストは毎日0時に更新します。
