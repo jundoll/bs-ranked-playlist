@@ -10,7 +10,7 @@ async def main():
     for star in range(15):
 
         # get ranked maplist
-        leaderboardInfoCollection = await scoresaberAPI.getLeaderboardInfoCollection(ranked=True, minStar=star-1, maxStar=star+1, category=1, sort=1, page=1)
+        leaderboardInfoCollection = await scoresaberAPI.getLeaderboardInfoCollection(ranked=True, minStar=star-1, maxStar=star+1, category=1, sort=0, page=1)
 
         # set songs
         if leaderboardInfoCollection is not None:
@@ -42,7 +42,7 @@ async def main():
             print(f'star={star:02}, page={page:03}')
 
             # get ranked maplist
-            leaderboardInfoCollection = await scoresaberAPI.getLeaderboardInfoCollection(ranked=True, minStar=star-1, maxStar=star+1, category=1, sort=1, page=page)
+            leaderboardInfoCollection = await scoresaberAPI.getLeaderboardInfoCollection(ranked=True, minStar=star-1, maxStar=star+1, category=1, sort=0, page=page)
 
             # set songs
             if leaderboardInfoCollection is not None:
