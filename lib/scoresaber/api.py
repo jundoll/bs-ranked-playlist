@@ -20,7 +20,8 @@ async def getLeaderboardInfoCollection(
     maxStar: float = 100,
     category: int = 0,
     sort: int = 0,
-    unique: bool = False
+    unique: bool = False,
+    page: int = 1
 ):
 
     # prepare query
@@ -47,6 +48,8 @@ async def getLeaderboardInfoCollection(
         query_list.append(f'sort={sort}')
     if unique:
         query_list.append('unique=true')
+    if page > 0:
+        query_list.append(f'page={page}')
     if len(query_list) > 0:
         query = f'?{"&".join(query_list)}'
     else:
