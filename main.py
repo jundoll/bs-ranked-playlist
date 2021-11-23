@@ -67,7 +67,6 @@ async def main():
                     slct_index = [not b for b in list(pd.Index(IDs).duplicated())]
                     IDs = [e for e, i in zip(IDs, slct_index) if i]
                     songs = [e for e, i in zip(songs, slct_index) if i]
-                    totalCount = leaderboardInfoCollection.totalCount
                 else:
                     break
             else:
