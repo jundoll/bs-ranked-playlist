@@ -27,19 +27,19 @@ jobs:
 
       - name: Generate Playlist
         run: |
-          mkdir dist
+          mkdir out
           python main.py
 
       - name: Release
         run: |
           set -x
-          cd dist
+          cd out
           zip -r ranked_playlist.zip ./*.*
           assets=()
           for asset in ./*.bplist; do
             assets+=("-a" "$asset")
           done
-          assets+=("-a" "ranked-playlist.zip")
+          assets+=("-a" "ranked_playlist.zip")
           tag_name=`date '+%Y%m%d%H%M'`
           hub release create "${assets[@]}" -m "Latest" "$tag_name"
         env:
