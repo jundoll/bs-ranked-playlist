@@ -84,7 +84,7 @@ async def main():
                 "customPassText": None
             },
             "playlistTitle": f"ranked_star_{star:02}",
-            "playlistAuthor": "aruru",
+            "playlistAuthor": "",
             "songs": songs,
             "image": img
         }
