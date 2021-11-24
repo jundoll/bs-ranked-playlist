@@ -29,14 +29,13 @@ async def main():
                         }
                     ]
                 } for x in leaderboardInfoCollection.leaderboards if int(x.stars) == star]
-                totalCount = leaderboardInfoCollection.totalCount
             else:
                 return
         else:
             return
 
         page = 0
-        while(len(songs) < totalCount):
+        while(True):
             # increment
             page += 1
             print(f'star={star:02}, page={page:03}')
@@ -62,11 +61,6 @@ async def main():
                             }
                         ]
                     } for x in leaderboardInfoCollection.leaderboards if int(x.stars) == star]
-
-                    # del duplicated element
-                    slct_index = [not b for b in list(pd.Index(IDs).duplicated())]
-                    IDs = [e for e, i in zip(IDs, slct_index) if i]
-                    songs = [e for e, i in zip(songs, slct_index) if i]
                 else:
                     break
             else:
@@ -74,8 +68,12 @@ async def main():
 
             await asyncio.sleep(1/200)
 
+        # del duplicated element
+        slct_index = [not b for b in list(pd.Index(IDs).duplicated())]
+        songs = [e for e, i in zip(songs, slct_index) if i]
+
         # read image
-        with open(f'img/s{star:02}.txt', 'r') as f:
+        with open(f'imgs/s{star:02}.txt', 'r') as f:
             img = f.read()
 
         # gen playlist
