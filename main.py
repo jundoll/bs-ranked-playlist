@@ -90,7 +90,7 @@ async def main():
         }
 
         # save
-        with open(f'dist/ranked_star_{star:02}.bplist', 'w') as f:
+        with open(f'out/ranked_star_{star:02}.bplist', 'w') as f:
             json.dump(playlist, f)
 
 
