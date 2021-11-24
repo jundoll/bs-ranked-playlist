@@ -34,7 +34,7 @@ jobs:
         run: |
           set -x
           cd dist
-          zip -r ranked-playlist.zip ./*.*
+          zip -r ranked_playlist.zip ./*.*
           assets=()
           for asset in ./*.bplist; do
             assets+=("-a" "$asset")
