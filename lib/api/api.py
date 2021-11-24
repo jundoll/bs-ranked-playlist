@@ -9,7 +9,7 @@ from urllib import error, request
 # const
 MAX_RETRIES = 20
 SLEEP_WAIT = 5
-USER_AGENT = "bs-ranked^playlist/1.0.0 (+contact twitter/@aruru_bs discord/あるる#1137)"
+USER_AGENT = "bs-ranked-playlist/1.0.0"
 
 
 # definition
