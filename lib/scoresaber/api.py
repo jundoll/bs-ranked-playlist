@@ -27,8 +27,6 @@ async def getLeaderboardInfoCollection(
     # prepare query
     query_list = []
     if search:
-        # base64変換(空白処理が主目的)
-        search = search
         query_list.append(f'search={search}')
     if verified:
         query_list.append('verified=true')
