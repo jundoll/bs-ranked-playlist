@@ -16,8 +16,7 @@ class LeaderboardInfo:
     songSubName: str
     songAuthorName: str
     levelAuthorName: str
-    difficulty: float
-    difficultyRaw: str
+    difficulty: Difficulty.Difficulty
     maxScore: float
     createdDate: str
     rankedDate: str
@@ -33,7 +32,7 @@ class LeaderboardInfo:
     dailyPlays: float
     coverImage: float
     playerScore: Union[Score.Score, None]
-    difficulties: Union[List[Difficulty.Difficulty], List]
+    difficulties: Union[List[Difficulty.Difficulty], List, None]
 
 
 # definition function
@@ -47,8 +46,7 @@ def gen(response):
             songSubName=response.get('songSubName'),
             songAuthorName=response.get('songAuthorName'),
             levelAuthorName=response.get('levelAuthorName'),
-            difficulty=response.get('difficulty'),
-            difficultyRaw=response.get('difficultyRaw'),
+            difficulty=Difficulty.gen(response.get('difficulty')),
             maxScore=response.get('maxScore'),
             createdDate=response.get('createdDate'),
             rankedDate=response.get('rankedDate'),
@@ -72,8 +70,12 @@ def gen(response):
 def genList(response):
 
     if response is None:
-        return []
-    elif (type(response) == 'list') and (len(response) == 0):
-        return []
+        return None
     else:
-        return [gen(v) for v in response]
+        if type(response) is list:
+            if len(response) == 0:
+                return []
+            else:
+                return [gen(v) for v in response]
+        elif type(response) is dict:
+            return [gen(response)]

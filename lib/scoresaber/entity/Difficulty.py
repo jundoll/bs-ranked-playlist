@@ -8,6 +8,8 @@ class Difficulty:
 
     leaderboardId: float
     difficulty: float
+    gameMode: str
+    difficultyRaw: str
 
 
 # definition function
@@ -15,7 +17,9 @@ def gen(response):
 
     instance = Difficulty(
         leaderboardId=response.get('leaderboardId'),
-        difficulty=response.get('difficulty')
+        difficulty=response.get('difficulty'),
+        gameMode=response.get('gameMode'),
+        difficultyRaw=response.get('difficultyRaw')
     )
     return instance
 
@@ -23,8 +27,12 @@ def gen(response):
 def genList(response):
 
     if response is None:
-        return []
-    elif (type(response) == 'list') and (len(response) == 0):
-        return []
+        return None
     else:
-        return [gen(v) for v in response]
+        if type(response) is list:
+            if len(response) == 0:
+                return []
+            else:
+                return [gen(v) for v in response]
+        elif type(response) is dict:
+            return [gen(response)]

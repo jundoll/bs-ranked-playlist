@@ -9,7 +9,7 @@ from lib.scoresaber.entity import LeaderboardInfo
 @dataclass(frozen=True)
 class LeaderboardInfoCollection:
 
-    leaderboards: Union[List[LeaderboardInfo.LeaderboardInfo], List]
+    leaderboards: Union[List[LeaderboardInfo.LeaderboardInfo], List, None]
     totalCount:  float
 
 
@@ -26,6 +26,13 @@ def gen(response):
 
 def genList(response):
 
-    if response is not None:
+    if response is None:
+        return None
+    else:
         if type(response) is list:
-            return [gen(v) for v in response]
+            if len(response) == 0:
+                return []
+            else:
+                return [gen(v) for v in response]
+        elif type(response) is dict:
+            return [gen(response)]

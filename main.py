@@ -1,4 +1,5 @@
 # load modules
+from numpy import iterable
 import pandas as pd
 import asyncio
 import json
@@ -14,7 +15,7 @@ async def main():
 
         # set songs
         if leaderboardInfoCollection is not None:
-            if len(leaderboardInfoCollection.leaderboards) > 0:
+            if (leaderboardInfoCollection.leaderboards is not None) and len(leaderboardInfoCollection.leaderboards) > 0:
                 IDs = [x.id for x in leaderboardInfoCollection.leaderboards if int(
                     x.stars) == star]
                 songs = [{
@@ -25,7 +26,7 @@ async def main():
                     "difficulties": [
                         {
                             "characteristic": "Standard",
-                            "name": x.difficultyRaw.split('_')[1]
+                            "name": x.difficulty.difficultyRaw.split('_')[1]
                         }
                     ]
                 } for x in leaderboardInfoCollection.leaderboards if int(x.stars) == star]
@@ -45,7 +46,7 @@ async def main():
 
             # set songs
             if leaderboardInfoCollection is not None:
-                if len(leaderboardInfoCollection.leaderboards) > 0:
+                if (leaderboardInfoCollection.leaderboards is not None) and len(leaderboardInfoCollection.leaderboards) > 0:
                     # get
                     IDs += [x.id for x in leaderboardInfoCollection.leaderboards if int(
                         x.stars) == star]
@@ -57,7 +58,7 @@ async def main():
                         "difficulties": [
                             {
                                 "characteristic": "Standard",
-                                "name": x.difficultyRaw.split('_')[1]
+                                "name": x.difficulty.difficultyRaw.split('_')[1]
                             }
                         ]
                     } for x in leaderboardInfoCollection.leaderboards if int(x.stars) == star]
