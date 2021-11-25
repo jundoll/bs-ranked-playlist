@@ -52,3 +52,8 @@ jobs:
           delete_tags: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: stefanzweifel/git-auto-commit-action@v3.0.0
+        with:
+          commit_message: Auto Commit
+          ref: ${{ github.head_ref }}
