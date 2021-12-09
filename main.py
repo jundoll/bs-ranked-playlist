@@ -1,5 +1,4 @@
 # load modules
-from numpy import iterable
 import pandas as pd
 import asyncio
 import json
