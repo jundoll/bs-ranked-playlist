@@ -16,12 +16,12 @@ async def getLeaderboardInfoCollection(
     ranked: bool = False,
     qualified: bool = False,
     loved: bool = False,
-    minStar: float = 0,
-    maxStar: float = 100,
-    category: int = 0,
-    sort: int = 0,
+    minStar: float = -1,
+    maxStar: float = -1,
+    category: int = -1,
+    sort: int = -1,
     unique: bool = False,
-    page: int = 1
+    page: int = -1
 ):
 
     # prepare query
@@ -40,9 +40,9 @@ async def getLeaderboardInfoCollection(
         query_list.append(f'minStar={minStar}')
     if maxStar >= 0:
         query_list.append(f'maxStar={maxStar}')
-    if category >= 0:
+    if (category >= 0) & (category <= 4):
         query_list.append(f'category={category}')
-    if sort >= 0:
+    if (sort >= 0) & (sort <= 1):
         query_list.append(f'sort={sort}')
     if unique:
         query_list.append('unique=true')
