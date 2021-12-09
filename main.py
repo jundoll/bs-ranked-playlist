@@ -8,7 +8,7 @@ import lib.scoresaber.api as scoresaberAPI
 async def main():
 
     # 1. ranked playlist
-    for star in range(1):
+    for star in range(15):
 
         # init
         page = 0
