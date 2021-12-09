@@ -5,11 +5,12 @@ import time
 import urllib.parse
 from urllib import error, request
 
+from version import VERSION
 
 # const
 MAX_RETRIES = 20
 SLEEP_WAIT = 5
-USER_AGENT = "bs-ranked-playlist/1.0.0"
+USER_AGENT = VERSION
 
 
 # definition
