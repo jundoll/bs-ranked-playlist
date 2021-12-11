@@ -43,7 +43,7 @@ jobs:
         run: |
           set -x
           cd out
-          zip -r ranked_playlist.zip ./*.*
+          zip -r all_playlists.zip ./*.*
           assets=()
           for asset in ./*.bplist; do
             assets+=("-a" "$asset")
