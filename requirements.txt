@@ -1,1 +1,2 @@
 pandas
+git+https://github.com/jundoll/bs-api-py.git
