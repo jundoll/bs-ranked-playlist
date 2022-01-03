@@ -2,7 +2,7 @@
 import pandas as pd
 import asyncio
 import json
-import lib.scoresaber.api as scoresaberAPI
+import BSAPI.scoresaber as scoresaber
 
 
 async def main():
@@ -22,7 +22,7 @@ async def main():
             print(f'star={star:02}, page={page:03}')
 
             # get ranked maplist
-            leaderboardInfoCollection = await scoresaberAPI.getLeaderboardInfoCollection(ranked=True, minStar=star-1, maxStar=star+1, category=1, sort=0, page=page)
+            leaderboardInfoCollection = await scoresaber.get_leaderboards(ranked=True, minStar=star-1, maxStar=star+1, category=1, sort=0, page=page)
 
             # set songs
             if leaderboardInfoCollection is not None:
@@ -89,7 +89,7 @@ async def main():
         print(f'star=qualified, page={page:03}')
 
         # get qualified maplist
-        leaderboardInfoCollection = await scoresaberAPI.getLeaderboardInfoCollection(qualified=True, category=4, sort=1, page=page)
+        leaderboardInfoCollection = await scoresaber.get_leaderboards(qualified=True, category=4, sort=1, page=page)
 
         # set songs
         if leaderboardInfoCollection is not None:
