@@ -61,9 +61,7 @@ async def main():
         fname = f'ranked_star_{star:02}.bplist'
         playlist = {
             "customData": {
-                "syncURL": f"https://github.com/jundoll/bs-ranked-playlist/releases/latest/download/{fname}",
-                "weighting": 20,
-                "customPassText": None
+                "syncURL": f"https://github.com/jundoll/bs-ranked-playlist/releases/latest/download/{fname}"
             },
             "playlistTitle": f"ranked_star_{star:02}",
             "playlistAuthor": "",
@@ -127,9 +125,7 @@ async def main():
     fname = 'ranked_star_qualified.bplist'
     playlist = {
         "customData": {
-            "syncURL": f"https://github.com/jundoll/bs-ranked-playlist/releases/latest/download/{fname}",
-            "weighting": 20,
-            "customPassText": None
+            "syncURL": f"https://github.com/jundoll/bs-ranked-playlist/releases/latest/download/{fname}"
         },
         "playlistTitle": f"ranked_star_qualified",
         "playlistAuthor": "",
