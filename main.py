@@ -1,8 +1,14 @@
 # load modules
-import pandas as pd
 import asyncio
 import json
+import os
+
 import BSAPI.scoresaber as scoresaber
+import pandas as pd
+
+from version import VERSION
+
+os.environ['USER_AGENT'] = f'{VERSION} (+contact twitter/@aruru_bs discord/あるる#1137)'
 
 
 async def main():
@@ -15,7 +21,7 @@ async def main():
         IDs = []
         songs = []
 
-        while(True):
+        while (True):
 
             # increment
             page += 1
@@ -80,7 +86,7 @@ async def main():
     IDs = []
     songs = []
 
-    while(True):
+    while (True):
 
         # increment
         page += 1
