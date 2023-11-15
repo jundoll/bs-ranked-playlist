@@ -50,9 +50,9 @@ jobs:
           for asset in ./*.bplist; do
             assets+=("$asset")
           done
-          assets+=("-a" "all_playlists.zip")
+          assets+=("all_playlists.zip")
           tag_name=`date '+%Y%m%d%H%M'`
-          gh release create "$tag_name" "${assets[@]}" -t "Latest"
+          gh release create "$tag_name" "${assets[@]}" --latest
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
