@@ -52,7 +52,7 @@ jobs:
           done
           assets+=("-a" "all_playlists.zip")
           tag_name=`date '+%Y%m%d%H%M'`
-          gh release create "$tag_name" "${assets[@]}"
+          gh release create "$tag_name" "${assets[@]}" -t "Latest"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
