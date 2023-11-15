@@ -48,7 +48,7 @@ jobs:
           zip -r all_playlists.zip ./*.*
           assets=()
           for asset in ./*.bplist; do
-            assets+=("-a" "$asset")
+            assets+=("$asset")
           done
           assets+=("-a" "all_playlists.zip")
           tag_name=`date '+%Y%m%d%H%M'`
