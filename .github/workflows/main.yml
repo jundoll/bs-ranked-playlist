@@ -3,7 +3,7 @@ name: BUILD
 # Controls when the workflow will run
 on:
   schedule:
-    - cron: "0 19 * * *"
+    - cron: "0 18 * * *"
   push:
     branches: [ main ]
   workflow_dispatch:
