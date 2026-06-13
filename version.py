@@ -1,1 +1,1 @@
-VERSION="bs-ranked-playlist/1.2.0"
+VERSION="bs-ranked-playlist/1.3.0"

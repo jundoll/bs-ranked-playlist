@@ -20,6 +20,7 @@ async def main():
         page = 0
         IDs = []
         songs = []
+        dates = []
 
         while (True):
 
@@ -34,8 +35,10 @@ async def main():
             if leaderboardInfoCollection is not None:
                 if (leaderboardInfoCollection.leaderboards is not None) and len(leaderboardInfoCollection.leaderboards) > 0:
                     # get
-                    IDs += [x.id for x in leaderboardInfoCollection.leaderboards if int(
-                        x.stars) == star]
+                    IDs += [
+                        x.id for x in leaderboardInfoCollection.leaderboards 
+                        if int(x.stars) == star
+                    ]
                     songs += [{
                         "songName": x.songName,
                         "levelAuthorName": x.levelAuthorName,
@@ -48,16 +51,29 @@ async def main():
                             }
                         ]
                     } for x in leaderboardInfoCollection.leaderboards if int(x.stars) == star]
+                    dates += [
+                        max(x.rankedDate, x.createdDate) if (x.rankedDate and x.createdDate)
+                        else x.rankedDate if x.rankedDate
+                        else x.createdDate
+                        for x in leaderboardInfoCollection.leaderboards 
+                        if int(x.stars) == star
+                    ]
+
                 else:
                     break
             else:
                 break
 
-            await asyncio.sleep(1/200)
+            await asyncio.sleep(60/400)
 
         # del duplicated element
         slct_index = [not b for b in list(pd.Index(IDs).duplicated())]
         songs = [e for e, i in zip(songs, slct_index) if i]
+        dates = [e for e, i in zip(dates, slct_index) if i]
+
+        # sort by rankedAt (or createdAt)
+        sorted_pairs = sorted(zip(songs, dates), key=lambda x: x[1], reverse=True)
+        songs, dates = zip(*sorted_pairs) if sorted_pairs else [[], []]
 
         # read image
         with open(f'imgs/s{star:02}.txt', 'r') as f:
@@ -117,7 +133,7 @@ async def main():
         else:
             break
 
-        await asyncio.sleep(1/200)
+        await asyncio.sleep(60/400)
 
     # del duplicated element
     slct_index = [not b for b in list(pd.Index(IDs).duplicated())]
