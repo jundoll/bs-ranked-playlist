@@ -5,9 +5,9 @@ on:
   schedule:
     - cron: "0 18 * * *"
   push:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build:
@@ -15,12 +15,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
-      - name: Setup Python 3.9
-        uses: actions/setup-python@v5
+      - name: Setup Python 3.12
+        uses: actions/setup-python@v6
         with:
-          python-version: 3.9
+          python-version: "3.12"
 
       - name: Install dependencies
         run: |
@@ -31,14 +31,9 @@ jobs:
         run: |
           echo `date +%Y%m%d%H%M%S` > version.txt
 
-      - name: Auto Commit
-        uses: stefanzweifel/git-auto-commit-action@master
-        with:
-          commit_message: Auto Commit
-
       - name: Generate Playlist
         run: |
-          mkdir out
+          mkdir -p out
           python main.py
 
       - name: Release
@@ -55,6 +50,11 @@ jobs:
           gh release create "$tag_name" "${assets[@]}" --latest -t "latest"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Auto Commit
+        uses: stefanzweifel/git-auto-commit-action@master
+        with:
+          commit_message: Auto Commit
 
       - name: Cleanup
         uses: dev-drprasad/delete-older-releases@master
